@@ -1,5 +1,5 @@
 import './App.css';
-import Area_Chart from './components/AreaChart';
+import Area_Chart,{AdvanceArea_Chart} from './components/AreaChart';
 import Bar_Chart, { AdvanceBar_Chart } from './components/BarChart';
 import Line_Chart from './components/LineChart';
 
@@ -10,8 +10,7 @@ function App() {
     <Bar_Chart/>
     <AdvanceBar_Chart />
     <Area_Chart/>
+    <AdvanceArea_Chart/>
     </>
-  );
-}
-
+)}
 export default App;
