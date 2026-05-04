@@ -1,62 +1,8 @@
-// import {
-//   ResponsiveContainer,
-//   BarChart,
-//   Bar,
-//   XAxis,
-//   YAxis,
-//   CartesianGrid,
-//   Tooltip,
-//   Legend
-// } from "recharts";
-
-// const data = [
-//   { name: "Page A", uv: 4000, pv: 2400 },
-//   { name: "Page B", uv: 3000, pv: 1398 },
-//   { name: "Page C", uv: 2000, pv: 9800 },
-//   { name: "Page D", uv: 2780, pv: 3908 },
-//   { name: "Page E", uv: 1890, pv: 4800 },
-//   { name: "Page F", uv: 2390, pv: 3800 },
-//   { name: "Page G", uv: 3490, pv: 4300 },
-// ];
-
-// const Bar_Chart = () => (
-//   <>
-//     <h1 className="chart-heading">Bar Chart (UV vs PV)</h1>
-
-//     <ResponsiveContainer width="100%" aspect={3}>
-//       <BarChart
-//         data={data}
-//         margin={{ top: 10, right: 400, left: 400, bottom: 10 }}
-//         barCategoryGap="20%"
-//       >
-//         <CartesianGrid strokeDasharray="3 3" />
-//         <XAxis dataKey="name" />
-//         <YAxis />
-//         <Tooltip />
-//         <Legend />
-
-//         <Bar
-//           dataKey="pv"
-//           fill="#8884d8"
-//           radius={[6, 6, 0, 0]}
-//         />
-
-//         <Bar
-//           dataKey="uv"
-//           fill="#82ca9d"
-//           radius={[6, 6, 0, 0]}
-//         />
-//       </BarChart>
-//     </ResponsiveContainer>
-//   </>
-// );
-
-// export default Bar_Chart;
 import {
   ResponsiveContainer,
+  BarChart,
   ComposedChart,
   Bar,
-  Line,
   Area,
   Scatter,
   XAxis,
@@ -69,7 +15,7 @@ import {
   ReferenceArea,
   Brush,
   ZAxis,
-  Label,
+  Label,Line
 } from "recharts";
 
 const data = [
@@ -82,7 +28,34 @@ const data = [
   { name: "Page G", uv: 3490, pv: 4300 },
 ];
 
+
+// BASIC BAR CHART
 const Bar_Chart = () => (
+  <>
+    <h1 className="chart-heading">Bar Chart (UV vs PV)</h1>
+
+    <ResponsiveContainer width="100%" aspect={3}>
+      <BarChart
+        data={data}
+        margin={{ top: 10, right: 400, left: 400, bottom: 10 }}
+        barCategoryGap="20%"
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+
+        <Bar dataKey="pv" fill="#8884d8" radius={[6, 6, 0, 0]} />
+        <Bar dataKey="uv" fill="#82ca9d" radius={[6, 6, 0, 0]} />
+      </BarChart>
+    </ResponsiveContainer>
+  </>
+);
+
+
+// ADVANCED  CHART
+export const AdvanceBar_Chart = () => (
   <>
     <h1 className="chart-heading">Advanced Composed Chart</h1>
 
@@ -117,7 +90,7 @@ const Bar_Chart = () => (
 
         <Bar dataKey="pv" fill="#a59ac7" />
 
-        {/* <Line type="monotone" dataKey="uv" stroke="red" strokeWidth={2} /> */}
+        <Line type="monotone" dataKey="uv" stroke="red" strokeWidth={2} />
 
         <Scatter dataKey="peak" fill="black" />
 
