@@ -1,4 +1,4 @@
-import {
+import { 
   ResponsiveContainer,
   LineChart,
   Line,
@@ -10,9 +10,7 @@ import {
   ReferenceLine,
   ReferenceDot,
   ReferenceArea,
-  Brush,
   Label,
-  Scatter,
 } from 'recharts';
 
 export const shipmentTrends = [
@@ -28,8 +26,32 @@ export const shipmentTrends = [
 function Line_Chart() {
   return (
     <>
-      <h1 className="chart-heading">Shipment Trends(LineChart)</h1>
+      
 
+      {/*  Mini Chart with Axis */}
+      <h1 className="chart-heading">SparkLine</h1>
+      <div style={{ width: "50%", height: "160px", marginBottom: "20px" ,marginLeft:"400px"}}>
+        <ResponsiveContainer>
+          <LineChart data={shipmentTrends}>
+            
+            <XAxis dataKey="date" />
+            <YAxis />
+
+            <Tooltip />
+
+            <Line
+              type="monotone"
+              dataKey="created"
+              stroke="#e24141"
+              strokeWidth={2}
+              dot={false}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+
+      {/*  Main Chart */}
+      <h1 className="chart-heading">Shipment Trends(LineChart)</h1>
       <ResponsiveContainer width="100%" aspect={3}>
         <LineChart
           data={shipmentTrends}
@@ -37,50 +59,30 @@ function Line_Chart() {
         >
           <CartesianGrid strokeDasharray="5 5" />
 
-          {/* X Axis */}
-          <XAxis dataKey="date" tickFormatter={(value=>value+"day")}>
+          <XAxis dataKey="date" tickFormatter={(value)=> value + " day"}>
             <Label position="insideBottom" offset={-5} />
           </XAxis>
 
-          {/* Y Axis */}
           <YAxis>
-            <Label
-              value="Shipment Count"
-              angle={-90}
-              position="insideLeft"
-            />
+            <Label value="Shipment Count" angle={-90} position="insideLeft" />
           </YAxis>
 
           <Tooltip />
           <Legend />
 
-          {/* Reference Line (Target line) */}
           <ReferenceLine y={110} stroke="blue" label="Target" />
 
-          {/* Highlight Area */}
-          <ReferenceArea
-            x1="Tues"
-            x2="Thurs"
-          />
+          <ReferenceArea x1="Tues" x2="Thurs" />
 
-          {/* Highlight specific point */}
-          <ReferenceDot
-            x="Fri"
-            y={200}
-            r={8}
-            fill="black"
-            stroke="none"
-            // label="Peak"
-          />
+          <ReferenceDot x="Fri" y={200} r={8} fill="black" />
 
-          {/* Lines */}
           <Line
             type="monotone"
             dataKey="created"
             stroke="#e24141"
             strokeWidth={3}
             activeDot={{ r: 8 }}
-            dot={{r:0}}
+            dot={false}
           />
 
           <Line
@@ -89,12 +91,8 @@ function Line_Chart() {
             stroke="#1d8f35"
             strokeWidth={3}
             activeDot={{ r: 8 }}
-            dot={{r:0}}
+            dot={false}
           />
-          
-          {/* Scatter (extra visualization layer) */}
-          <Scatter dataKey="peak" fill="black" />
-          {/* Brush for zooming */}
         </LineChart>
       </ResponsiveContainer>
     </>
